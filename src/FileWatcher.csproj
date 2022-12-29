@@ -2,17 +2,18 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>    
     <RootNamespace>TE.FileWatcher</RootNamespace>
     <AssemblyName>fw</AssemblyName>
     <Version>1.4.0</Version>
-    <PublishSingleFile>true</PublishSingleFile>
+    <PublishSingleFile>false</PublishSingleFile>
     <SelfContained>true</SelfContained>
     <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <PublishTrimmed>true</PublishTrimmed>
+    <PublishAot>true</PublishAot>
     <Authors>Paul Salmon</Authors>
     <Product>FileWatcher</Product>
     <Description>Monitor folders and files on the local system for changes.</Description>
@@ -25,6 +26,14 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageId>TE.FileWatcher</PackageId> 
     <AnalysisLevel>latest-all</AnalysisLevel>  
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>7</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <WarningLevel>7</WarningLevel>
   </PropertyGroup>
 
   <ItemGroup>
