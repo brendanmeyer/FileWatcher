@@ -146,11 +146,6 @@ namespace TE.FileWatcher.Configuration.Commands
                         _process.StartInfo.UseShellExecute = false;
                         _process.EnableRaisingEvents = true;
                         _process.Exited += OnProcessExit;
-
-                        Logger.WriteLine(
-                            $"Running command '{startInfo.FileName}' with arguments '{startInfo.Arguments}'.",
-                            LogLevel.INFO);
-
                         _isProcessRunning = _process.Start();
                     }
                     else

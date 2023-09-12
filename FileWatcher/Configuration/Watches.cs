@@ -16,27 +16,27 @@ namespace TE.FileWatcher.Configuration
         public Logging Logging { get; set; } = new Logging();
 
         /// <summary>
-        /// Gets or sets the watch folder list.
+        /// Gets or sets the watches list.
         /// </summary>
-        [XmlElement("watchFolder")]
-        public List<WatchFolder>? WatchFolderList { get; set; }
+        [XmlElement("watch")]
+        public List<Watch>? WatchList { get; set; }
 
         /// <summary>
         /// Starts the watches.
         /// </summary>
         public void Start()
         {
-            if (WatchFolderList == null || WatchFolderList.Count <= 0)
+            if (WatchList == null || WatchList.Count <= 0)
             {
-                Logger.WriteLine("No watch folders were specified.", LogLevel.ERROR);
+                Logger.WriteLine("No watches were specified.", LogLevel.ERROR);
                 return;
             }
 
-            foreach (WatchFolder watchFolder in WatchFolderList)
+            foreach (Watch watch in WatchList)
             {
                 try
                 {
-                    Task.Run(() => watchFolder.Start());
+                    Task.Run(() => watch.Start());
                 }
                 catch (Exception ex)
                 {
