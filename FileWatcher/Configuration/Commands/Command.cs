@@ -22,14 +22,16 @@ namespace TE.FileWatcher.Configuration.Commands
         /// <summary>
         /// Gets or sets the arguments associated with the file to execute.
         /// </summary>
+        private string? _arguments;
         [XmlElement("arguments")]
-        public string? Arguments { get; set; }
+        public string? Arguments { get => Environment.ExpandEnvironmentVariables(_arguments ?? ""); set => _arguments = value; }
 
         /// <summary>
         /// Gets or sets the full path to the file to executed.
         /// </summary>
+        private string? _path;
         [XmlElement("path")]
-        public string? Path { get; set; }
+        public string? Path { get => Environment.ExpandEnvironmentVariables(_path ?? ""); set => _path = value; }
 
         /// <summary>
         /// Gets or sets the triggers of the action.

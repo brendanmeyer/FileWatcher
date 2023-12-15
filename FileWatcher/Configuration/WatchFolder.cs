@@ -29,11 +29,12 @@ namespace TE.FileWatcher.Configuration
         // The queue that will contain the changes
         private ConcurrentQueue<ChangeInfo>? _queue;
 
+        private string? _path;
         /// <summary>
         /// Gets or sets the path of the watch.
         /// </summary>
         [XmlElement("path")]
-        public string? Path { get; set; }
+        public string? Path { get => Environment.ExpandEnvironmentVariables(_path ?? ""); set => _path = value; }
 
         /// <summary>
         /// Gets or sets the timeout value (in seconds) for the watch.

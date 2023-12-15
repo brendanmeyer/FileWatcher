@@ -36,11 +36,11 @@ namespace TE.FileWatcher.Configuration
         { 
             get
             {
-                return _logPath;
+                return Environment.ExpandEnvironmentVariables(_logPath ?? "");
             }
             set
             {
-                _logPath = !string.IsNullOrWhiteSpace(value) ?  value : Path.Combine(Path.GetTempPath(), Logger.DEFAULT_LOG_NAME);
+                _logPath = !string.IsNullOrWhiteSpace(value) ? value : Path.Combine(Path.GetTempPath(), Logger.DEFAULT_LOG_NAME);
             }
         }
 
