@@ -25,8 +25,9 @@ namespace TE.FileWatcher.Configuration.Filters
         /// <exception cref="FileWatcherException">
         /// Thrown when there is a problem with the path.
         /// </exception>
-        public bool IsMatch(string watchPath, string name, string fullPath)
+        public bool IsMatch(ChangeInfo change, string watchPath, string name, string fullPath)
         {
+            TriggerTypeName = $"{change.Trigger.ToString()} ";
             FilterTypeName = "Filter";
             return IsMatchFound(watchPath, name, fullPath);
         }

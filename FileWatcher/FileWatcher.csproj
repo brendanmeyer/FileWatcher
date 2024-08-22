@@ -2,14 +2,12 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>    
     <RootNamespace>TE.FileWatcher</RootNamespace>
     <AssemblyName>fw</AssemblyName>
     <Version>1.4.0</Version>
-    <PublishSingleFile>true</PublishSingleFile>
-    <SelfContained>true</SelfContained>
     <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <PublishTrimmed>true</PublishTrimmed>
@@ -23,7 +21,9 @@
     <PackageTags>filesystem file-monitoring folder-monitoring</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageId>TE.FileWatcher</PackageId>   
+    <PackageId>TE.FileWatcher</PackageId>
+    <StartupObject>TE.FileWatcher.Program</StartupObject>
+    <PlatformTarget>AnyCPU</PlatformTarget>   
   </PropertyGroup>
 
   <ItemGroup>
