@@ -14,20 +14,20 @@ namespace TE.FileWatcher.Configuration
         // The file system watcher object
         private FileSystemWatcher? _fsWatcher;
 
-        // // Information about the last change
-        // private ChangeInfo? _lastChange;
+        // Information about the last change
+        private ChangeInfo? _lastChange;
 
-        // // The write time for the last change
-        // private DateTime _lastWriteTime;
+        // The write time for the last change
+        private DateTime _lastWriteTime;
 
-        // // The timer used to "reset" the FileSystemWatch object
-        // private System.Timers.Timer? _timer;
+        // The timer used to "reset" the FileSystemWatch object
+        private System.Timers.Timer? _timer;
 
-        // // The background worker that processes the file/folder changes
-        // private BackgroundWorker? _worker;
+        // The background worker that processes the file/folder changes
+        private BackgroundWorker? _worker;
 
-        // // The queue that will contain the changes
-        // private ConcurrentQueue<ChangeInfo>? _queue;
+        // The queue that will contain the changes
+        private ConcurrentQueue<ChangeInfo>? _queue;
 
         /// <summary>
         /// Gets or sets the filters.
@@ -109,7 +109,7 @@ namespace TE.FileWatcher.Configuration
                 {
                     // If the file or folder is not a match, then don't take
                     // any further actions
-                    if (!Filters.IsMatch(change, path, change.Name, change.FullPath))
+                    if (!Filters.IsMatch(path, change.Name, change.FullPath))
                     {
                         return false;
                     }
@@ -119,7 +119,7 @@ namespace TE.FileWatcher.Configuration
                 {
                     // If the file or folder is in the exclude list, then don't
                     // take any further actions
-                    if (Exclusions.Exclude(change, path, change.Name, change.FullPath))
+                    if (Exclusions.Exclude(path, change.Name, change.FullPath))
                     {
                         return false;
                     }

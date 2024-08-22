@@ -25,9 +25,8 @@ namespace TE.FileWatcher.Configuration.Exclusions
         /// <exception cref="FileWatcherException">
         /// Thrown when there is a problem with the path.
         /// </exception>
-        public bool Exclude(ChangeInfo change, string watchPath, string name, string fullPath)
+        public bool Exclude(string watchPath, string name, string fullPath)
         {
-            TriggerTypeName = $"{change.Trigger.ToString()} ";
             FilterTypeName = "Exclude";
             return IsMatchFound(watchPath, name, fullPath);
         }

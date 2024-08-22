@@ -52,12 +52,6 @@ namespace TE.FileWatcher.Configuration.Data
         private protected string FilterTypeName { get; set; } = "Filter";
 
         /// <summary>
-        /// Gets or sets the type of trigger used for logging.
-        /// </summary>
-        [XmlIgnore]
-        private protected string TriggerTypeName { get; set; } = "";
-
-        /// <summary>
         /// Gets a value indicating if at least one valid filtering value has
         /// been specified. An empty element could be added to the XML file,
         /// so this method ensures a filtering element has a valid value
@@ -132,7 +126,7 @@ namespace TE.FileWatcher.Configuration.Data
                 {
                     if (fileAttributes.HasFlag(attribute))
                     {
-                        Logger.WriteLine($"{TriggerTypeName}{FilterTypeName}: The path '{path}' has the attribute '{attribute}'.");
+                        Logger.WriteLine($"{FilterTypeName}: The path '{path}' has the attribute '{attribute}'.");
                         hasAttribute = true;
                         break;
                     }
@@ -173,7 +167,7 @@ namespace TE.FileWatcher.Configuration.Data
                 isMatch = fileName.IsMatch(name);
                 if (isMatch)
                 {
-                    Logger.WriteLine($"{TriggerTypeName}{FilterTypeName}: The match pattern '{fileName.Pattern}' is a match for file {name}.");
+                    Logger.WriteLine($"{FilterTypeName}: The match pattern '{fileName.Pattern}' is a match for file {name}.");
                     break;
                 }
             }
@@ -209,7 +203,7 @@ namespace TE.FileWatcher.Configuration.Data
                 isMatch = folder.IsMatch(path);
                 if (isMatch)
                 {
-                    Logger.WriteLine($"{TriggerTypeName}{FilterTypeName}: The match pattern '{folder.Pattern}' is a match for folder '{path}'.");
+                    Logger.WriteLine($"{FilterTypeName}: The match pattern '{folder.Pattern}' is a match for folder '{path}'.");
                     break;
                 }
             }
@@ -244,7 +238,7 @@ namespace TE.FileWatcher.Configuration.Data
             {
                 if (path.Contains(aPath))
                 {
-                    Logger.WriteLine($"{TriggerTypeName}{FilterTypeName}: The path '{path}' contains the path '{aPath}'.");
+                    Logger.WriteLine($"{FilterTypeName}: The path '{path}' contains the path '{aPath}'.");
                     isMatch = true;
                     break;
                 }
