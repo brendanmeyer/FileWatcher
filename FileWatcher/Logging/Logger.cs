@@ -1,5 +1,4 @@
 ﻿using System.Collections.Concurrent;
-using System.Runtime.InteropServices;
 
 namespace TE.FileWatcher.Logging
 {
@@ -359,7 +358,7 @@ namespace TE.FileWatcher.Logging
                     lock (locker)
                     {
                         RolloverLog();
-                        using StreamWriter writer = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? new(LogFullPath, true, System.Text.Encoding.UTF8) : new(LogFullPath, true);
+                        using StreamWriter writer = new(LogFullPath, true);
                         writer.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss} {message.LevelString} {message.Value}");
                     }
                 }
